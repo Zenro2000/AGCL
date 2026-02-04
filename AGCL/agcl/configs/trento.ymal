@@ -1,0 +1,39 @@
+seed: 7
+device: cuda
+
+data:
+  npz_path: data/Trento_superpixels.npz
+  knn_k: 12
+  symmetrize: true
+
+augment:
+  feat_drop: 0.2
+  noise_sigma: 0.02
+  edge_drop: 0.2
+
+model:
+  hsi_in: 63
+  lidar_in: 1
+  enc_hid: 256
+  enc_out: 256
+  proj_hid: 256
+  proj_out: 128
+  enc_layers: 2
+  enc_dropout: 0.1
+  proj_dropout: 0.0
+
+hnm:
+  queue_size: 65536
+  topk: 4096
+  temperature: 0.2
+
+train:
+  epochs: 200
+  lr: 0.001
+  weight_decay: 0.0001
+  log_every: 10
+
+finetune:
+  epochs: 200
+  lr: 0.001
+  weight_decay: 0.0001
